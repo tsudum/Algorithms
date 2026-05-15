@@ -13,6 +13,7 @@ sys.path.append(str(ROOT_DIR))
 
 from structures.graph import Graph
 from graph.bfs import bfs
+from graph.dfs import dfs
 from visualization.graph_visualizer import GraphVisualizer
 
 
@@ -21,14 +22,25 @@ def build_graph() -> Graph:
 
     graph.add_edge("A", "B")
     graph.add_edge("A", "C")
+
     graph.add_edge("B", "D")
-    graph.add_edge("C", "E")
+    graph.add_edge("B", "E")
+
+    graph.add_edge("C", "F")
+    graph.add_edge("C", "G")
+
+    graph.add_edge("D", "H")
+    graph.add_edge("E", "I")
+
+    graph.add_edge("F", "J")
+    graph.add_edge("G", "K")
 
     return graph
 
 
 ALGORITHMS = {
     "BFS": bfs,
+    "DFS": dfs,
 }
 
 
@@ -91,7 +103,8 @@ with legend_col4:
     )
 
 algorithm = ALGORITHMS[selected_algorithm]
-states = list(algorithm(graph, start_node))
+# we convert the generator to a list so we can easily navigate through the states with buttons
+states = list(algorithm(graph, start_node)) 
 
 if "step" not in st.session_state:
     st.session_state.step = 0
@@ -122,9 +135,15 @@ with col2:
         st.rerun()
 
 with st.expander("Current Algorithm State"):
-    st.json({
+    algorithm_state = {
         "current": state.get("current"),
         "visited": list(state.get("visited", [])),
-        "queue": state.get("queue", []),
         "order": state.get("order", []),
-    })
+    }
+
+    if selected_algorithm == "BFS":
+        algorithm_state["queue"] = state.get("queue", [])
+    elif selected_algorithm == "DFS":
+        algorithm_state["stack"] = state.get("stack", [])
+
+    st.json(algorithm_state)

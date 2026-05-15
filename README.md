@@ -5,10 +5,10 @@ implementations, visualizations, and notes.
 
 ## Algorithms Progress
 
-some algorithms on the top of my head for now...
+some algorithms on the list for now...
 
-- [ ] DFS
-- [ ] BFS
+- [x] DFS
+- [x] BFS
 - [ ] Topological Sort (Kahn's BFS)
 - [ ] Union Find
 - [ ] Dijkstra’s Algorithm

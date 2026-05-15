@@ -1,7 +1,6 @@
 from structures.graph import Graph
 from collections import deque
 
-# returns traversal order of the nodes
 def bfs(graph: Graph, start: str):
     q = deque([start])
     visited = {start}
