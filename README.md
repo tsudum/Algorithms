@@ -5,7 +5,7 @@ implementations, visualizations, and notes.
 
 ## Algorithms Progress
 
-some algorithms on the list for now...
+some algorithms/problems on the list for now...
 
 - [x] DFS
 - [x] BFS
@@ -17,3 +17,4 @@ some algorithms on the list for now...
 - [ ] Floyd–Warshall Algorithm
 - [ ] Kruskal’s Algorithm
 - [ ] Indexed Heap / Priority Queue
+- [ ] 0/1 Knapsack 
